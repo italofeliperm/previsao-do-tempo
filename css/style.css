@@ -1,82 +1,301 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
 }
 
-body{
-    height: 100vh;
+body {
+    min-height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("https://source.unsplash.com/1600x900/?landscape");
+    background-image: linear-gradient(to bottom right, #1f4037, #99f2c8);
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    overflow-x: hidden;
 }
 
 .caixa-maior {
-    background: black;
-    opacity: 0.8;
-    border-radius: 25px;
-    padding: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 15px;
     width: 95%;
-    max-width: 450px;
+    max-width: 400px;
+    display: grid;
+    gap: 15px;
+}
+
+.search-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .input-cidade {
+    flex: 1;
     border: none;
     outline: none;
-    padding: 10px;
-    border-radius: 25px;
-    font-size: 18px;
-    background-color: #7c7c7c2b;
+    padding: 12px 20px;
+    border-radius: 15px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
-    width: calc(100% - 100px);
+    transition: all 0.3s ease;
 }
 
-.botao-busca{
+.input-cidade::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-cidade:focus {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.botao-busca {
     border: none;
     outline: none;
-    padding: 10px;
-    border-radius: 50px;
-    background-color: #7c7c7c2b;
+    padding: 12px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.2);
     cursor: pointer;
-    float: right;
+    transition: all 0.3s ease;
 }
 
-.img-busca{
+.botao-busca:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.img-busca {
     width: 20px;
+    filter: brightness(0) invert(1);
 }
 
-.caixa-media{
-    margin-top: 30px;
+.caixa-media {
+    display: grid;
+    gap: 5px;
 }
 
-.cidade{
+.location-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cidade {
+    font-size: 2rem;
     color: #fff;
-    font-size: 25px;
-    font-weight: 300;
 }
 
-.temp{
-    font-size: 20px;
-    color: #fff;
-    margin-top: 20px;
+.data {
+    font-size: 0.7rem;
+    opacity: 0.8;
 }
 
-.caixa-menor{
+.temp-container {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    justify-content: space-between;
+    margin: 10px 0;
 }
 
-.texto-previsao{
-    color: #fff;
-    margin-left: 20px;
-    text-transform: capitalize;
+.temp {
+    font-size: 4rem;
+    font-weight: 200;
+}
+
+.temp-minmax {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.caixa-menor {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.img-previsao {
+    width: 50px;
+    height: 50px;
+    margin: -10px 0;
+}
+
+.texto-previsao {
+    font-size: 0.9rem;
+    margin: 0;
 }
 
 .umidade {
     color: #fff;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px 20px;
+    border-radius: 15px;
     margin-top: 20px;
+}
+
+.forecast-container {
+    margin-top: 15px;
+}
+
+.forecast-container h3 {
+    font-size: 1rem;
+    margin-bottom: 5px;
+}
+
+.forecast-items {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding: 10px 0;
+    margin: 0 -15px;
+    padding: 0 15px;
+}
+
+.forecast-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 50px;
+}
+
+.forecast-day {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.forecast-icon {
+    width: 35px;
+    height: 35px;
+}
+
+.forecast-temp {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.info-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.info-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.8;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    opacity: 0.8;
+    margin-top: 4px;
+}
+
+.vento,
+.pressao,
+.umidade,
+.sunrise,
+.sunset {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin: 2px 0;
+}
+
+/* Dark theme variables */
+:root {
+    --bg-gradient-light: linear-gradient(to bottom right, #1f4037, #99f2c8);
+    --bg-gradient-dark: linear-gradient(to bottom right, #0f2027, #203a43, #2c5364);
+    --card-bg-light: rgba(255, 255, 255, 0.1);
+    --card-bg-dark: rgba(0, 0, 0, 0.2);
+}
+
+body.dark-theme {
+    background-image: var(--bg-gradient-dark);
+}
+
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.location-btn {
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.temp-toggle {
+    margin: 10px 0;
+    font-size: 16px;
+    color: white;
+}
+
+.temp-toggle span {
+    cursor: pointer;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.temp-toggle span.active {
+    opacity: 1;
+    font-weight: bold;
+}
+
+/* Responsive improvements */
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    .caixa-maior {
+        padding: 12px;
+    }
+
+    .info-container {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+    }
+
+    .info-item {
+        padding: 6px;
+    }
+}
+
+/* Esconder a barra de rolagem mas manter a funcionalidade */
+.forecast-items::-webkit-scrollbar {
+    display: none;
+}
+
+.forecast-items {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
